@@ -1,0 +1,192 @@
+/* Estilo Básico e Reset */
+html, body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 100%; /* Para o mapa e outros elementos de altura completa */
+  background-color: #009c7a;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.imagem-logo {
+  max-width: 290px;
+  margin-right: 20px;
+  margin-bottom: auto;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Layout Principal */
+
+header {
+  background: rgb(0,156,122);
+  background: linear-gradient(233deg, rgba(0,156,122,1) 53%, rgba(7, 148, 89, 0.984) 100%);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+ h2 {
+  margin: 0;
+  text-align: center; /* Centraliza h2 também */
+}
+
+section, footer {
+  padding: 20px;
+}
+
+footer {
+  background: rgb(0,156,122);
+  background: linear-gradient(233deg, rgba(0,156,122,1) 53%, rgba(7, 148, 89, 0.984) 100%);
+  color: white;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Navegação */
+nav {
+  background-color: #007777;
+  padding: 10px;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+li {
+  display: inline;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #FFF;
+  background-color: transparent;
+  border-color: #0cf5c2;
+}
+
+/* Estilos Específicos de Botões */
+.botao-voltar, .botao-busca, .botao-login, .botao-cadastro {
+  position: absolute;
+  background-color: #0dd8ac;
+  color: #000;
+  z-index: 999;
+  border: 1px solid #79e9d1;
+}
+
+.botao-voltar {
+  top: 20px;
+  left: 20px;
+  border-radius: 5px;
+}
+
+.botao-busca {
+  top: 20px;
+  right: 20px;
+  width: 50px;
+}
+
+.botao-login {
+  top: 20px;
+  right: 20px;
+  border-radius: 5px;
+}
+
+.botao-cadastro {
+  bottom: 213px;
+  right: 481px;
+}
+
+/* Layout de Página de Recuperação de Senha */
+.recuperar_senha {
+  background-color: #009c7a;
+}
+
+.container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="email"], input[type="submit"] {
+  width: auto;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="email"] {
+  border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+  width: auto;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Animações e Estilos Especiais */
+.container-especializacao {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.especializacoes {
+  position: absolute;
+  display: flex;
+  animation: moveEspecializacoes 30s linear infinite;
+  white-space: nowrap;
+}
+
+.especializacao {
+  padding: 10px;
+  font-size: 18px;
+  background-color: #68ffa7;
+  color: #fff;
+  text-shadow: 0 0 10px #000000, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #00ff00, 0 0 70px #00ff00, 0 0 80px #00ff00, 0 0 100px #00ff00, 0 0 150px #00ff00;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.especializacao:last-child {
+  margin-right: 0;
+}
+
+@keyframes moveEspecializacoes {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}

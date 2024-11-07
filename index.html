@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+	<link rel="stylesheet" href="styles.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sisconmed</title>
+		
+	</head>
+	<body>
+		<style>
+			/* Aplica a imagem de fundo ao corpo inteiro da página */
+			body {
+			  background-image: url('https://i.pinimg.com/originals/85/64/cd/8564cdc8db657a0acb3088ff14c7e1ef.jpg'); /* Caminho para a imagem */
+			  background-repeat: no-repeat; /* Não repetir a imagem */
+			  background-size: cover; /* Cobrir toda a página */
+			  background-position: center; /* Centralizar imagem na página */
+			}
+		</style>
+		<style>
+
+			#news-banner {
+    			background-color: #007bff; /* Cor de fundo azul */
+    			color: white; /* Texto branco */
+    			padding: 20px 10px; /* Espaçamento interno */
+    			text-align: center; /* Centraliza o texto */
+			}
+
+			.news-content h2 {
+    			margin: 0 0 10px; /* Espaço abaixo do título */
+			}
+
+			.news-content p {
+    			margin: 0 0 20px; /* Espaço abaixo do parágrafo */
+			}
+
+			.news-link {
+    			color: #01ff62; /* Cor do link (amarelo) */
+    			font-weight: bold; /* Texto em negrito */
+    			text-decoration: none; /* Sem sublinhado */
+    			background-color: #0062cc; /* Fundo mais escuro */
+    			padding: 10px 20px; /* Espaçamento interno */
+    			border-radius: 5px; /* Borda arredondada */
+    			transition: background-color 0.3s; /* Transição suave de cor de fundo */
+			}
+
+			.news-link:hover, .news-link:focus {
+    			background-color: #004495; /* Cor ao passar o mouse ou focar */
+			}
+
+			.imagem-logo {
+            max-width: 290px;
+            margin-right: 20px;
+           margin-bottom: auto;
+        }
+
+		</style>
+	
+	<header>
+		
+		<img  class="imagem-logo" src="img/logo.png">
+	</header>
+
+	<nav>
+		<ul>
+			<li><a href="index.html">Início</a></li>
+			<li><a href="Localizacao.html">Contato Localizações</a></li>
+			<li><a href="Login.html?redirect=busca">Consultas Agendadas</a></li>
+			<li><a href="especializacao.html">Especializações</a></li>
+			<li><a href="Sobre.html">Sobre</a></li>
+		</ul>
+	</nav>
+	<!--
+	<section>
+		<h2>Conteúdo Principal</h2>
+		<p>Este é o conteúdo principal do portal.</p>
+	</section>
+	-->
+
+  <!-- aqui comeca o codigo do botao de login -->
+	
+	<a class="botao-login" href="Login.html?redirect=agendamento">Login</a>
+<!-- aqui termina o codigo do botao de login -->
+	</header>
+
+	<!--<section id="content">
+		<p>Esta é a seção principal da página.</p>
+		-->
+	<section class="bg-primary-color">
+		<div class="container-especializacao">
+			<div class="especializacoes">
+			  <div class="especializacao">Cardiologia</div>
+			  <div class="especializacao">Ortopedia</div>
+			  <div class="especializacao">Dermatologia</div>
+			  <div class="especializacao">Neurologia</div>
+			  <div class="especializacao">Ginecologia</div>
+			  <div class="especializacao">Pediatria</div>
+			  <div class="especializacao">Oftalmologia</div>
+			  <div class="especializacao">Psiquiatria</div>
+			  <div class="especializacao">Urologia</div>
+			  <div class="especializacao">Oncologia</div>
+			  <div class="especializacao">Otorrinolaringologia</div>
+		</div>
+		
+		<div class="container">
+		
+			<!--<div class="row justify-content-center text-center">
+				<h4 class="text-white">Exemplo para Titulo de conteudo</h4>
+				<p class="text-white">Aqui será colocado todos os conteúdos e noticias da página</p>
+			</div>
+		</div>	
+	</section>-->
+
+	<!-- Seção Banner de Notícias -->
+	<section id="news-banner">
+		<h2 id="news-title">Últimas Notícias em Saúde</h2>
+		<p id="news-text">Confira as últimas atualizações e novidades.</p>
+		<a href="#" id="news-link" class="news-link">Leia mais</a>
+	</section>
+</section>
+<script>
+	const newsArray = [
+    	{ title: "Dia Mundial da Saúde", text: "Participe de eventos e atividades voltadas à promoção da saúde mundial.", link: "https://bvsms.saude.gov.br/construindo-um-mundo-mais-justo-e-saudavel-07-4-dia-mundial-da-saude/" },
+    	{ title: "Novidades em Vacinação", text: "Descubra as novas diretrizes de vacinação para sua região.", link: "https://www.gov.br/saude/pt-br/vacinacao" },
+    	{ title: "Dicas de Nutrição", text: "Leia nossas últimas dicas de nutrição para manter um estilo de vida saudável.", link: "https://nutritotal.com.br/publico-geral/material/4-dicas-valiosas-de-nutricao-para-voce-colocar-em-pratica/" }
+	];
+
+	let currentNews = 0; // Índice inicial das notícias
+
+
+	function displayNews() {
+    	const newsTitle = document.getElementById('news-title');
+    	const newsText = document.getElementById('news-text');
+    	const newsLink = document.getElementById('news-link');
+
+    // Atualiza o conteúdo com a notícia atual
+    	newsTitle.textContent = newsArray[currentNews].title;
+    	newsText.textContent = newsArray[currentNews].text;
+    	newsLink.href = newsArray[currentNews].link;
+	}
+
+	function nextNews() {
+    	currentNews = (currentNews + 1) % newsArray.length; // Move para a próxima notícia e volta ao início depois da última
+    	displayNews(); // Atualiza o banner com a nova notícia
+	}
+
+	// Definir intervalo para mudança automática de notícias
+	setInterval(nextNews, 5000); // Altera a notícia a cada 5 segundos
+
+
+</script>
+  
+	<!--</section>-->
+
+	<footer>
+		<p>&copy; 2024 Sisconmed. Todos os direitos reservados.</p>
+	</footer>
+
+	<script src="script.js"></script>
+	</body>
+</html>

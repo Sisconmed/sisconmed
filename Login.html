@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #009c7a;
+            padding: 0;
+            overflow: hidden;
+            
+        }
+        
+        /* IMAGEM LOGO */
+        .imagem-logo-2 {
+            width: 300px;    
+            position: absolute;
+            margin-top: -100px;
+            margin-left: 520px;
+        
+        
+        }
+        /*estrutura da página em geral */
+        .container {
+            max-width: 400px;
+            margin: 200px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            
+        }
+
+        /*estrutura login*/
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 30px;
+            font-weight: 900;
+        }
+        /*estrutura CPF,senha */
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        /*estrutura botões*/
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 17px;
+            margin-top: 10px;
+            background-color: #0cf5c2;
+            color: #000000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #009c7a;
+            color: #fff;
+        }
+
+        /* Layout dos links de recuperação e cadastro */
+        .action-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        
+        }
+
+        .action-links a {
+            background-color: #0cf5c2;
+            color: #000000;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            flex: 1;
+            margin: 0 6px;
+            font-size: 14px;
+            width: 100%;
+            padding: 10px;
+
+        }
+
+        .action-links a:hover {
+            background-color: #009c7a;
+            color: #fff
+        }
+
+        .botao-voltar {
+            top: 15px;
+            left: 5px;
+            background-color: #0dd8ac;
+            color: #000000;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            flex: 1;
+            margin: 0 5px;
+            font-size: 14px;
+            position: absolute;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+             
+        }
+
+        .botao-voltar:hover {
+            background-color: #075544;
+            color: #fff;
+        }
+        
+    </style>
+</head>
+<body>
+    <a class="botao-voltar":hover href="index.html">Voltar</a>
+    </body>
+<body>
+    <!--IMAGEM LOGO -->
+    <img  class="imagem-logo-2" src="img/logo - 2.png">
+  <div class="container">
+        <h2>Login</h2>
+
+        <form action="processar_login.php" method="post">
+            <input type="hidden" name="redirect" id="redirectField" value="">
+            <input type="text" name="CPF" placeholder="CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required oninput="aplicarMascaraCPF(this)">
+            <input type="password" name="senha" placeholder="Senha" required>
+            <input type="submit" value="Login">
+        </form>
+
+        <div class="action-links">
+            <a href="recuperar_senha.html" class="botao-recuperar">Esqueci minha senha</a>
+            <a href="cadastro.html" class="botao-cadastro">Crie uma conta</a>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var redirect = urlParams.get('redirect') || '';
+            document.getElementById('redirectField').value = redirect;
+        });
+
+        // Adiciona a máscara de CPF ao campo CPF
+        function aplicarMascaraCPF(campo) {
+            var cpf = campo.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+            cpf = cpf.substring(0, 11); // Limita a 11 dígitos
+
+            // Formatação da máscara
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+
+            campo.value = cpf; // Atualiza o valor no campo
+        }
+    </script>
+
+</body>
+</html>

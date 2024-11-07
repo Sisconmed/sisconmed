@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processando Login</title>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+</head>
+<body>
+    <script>
+        // Sua configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBgPV9x02nd8wkEwmXRPWhjMBsB2DEJKoI",
+		  authDomain: "sisconmed-006.firebaseapp.com",
+		  projectId: "sisconmed-006",
+		  storageBucket: "sisconmed-006.appspot.com",
+		  messagingSenderId: "329792157750",
+		  appId: "1:329792157750:web:009d5f4104ebc525dcc097"
+        };
+
+        // Inicializa o Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Coleta os dados do POST
+        const urlParams = new URLSearchParams(window.location.search);
+        const CPF = urlParams.get('CPF');
+        const senha = urlParams.get('senha');
+        const redirect = urlParams.get('redirect') || 'default';
+
+        (async function() {
+            try {
+                // Verifica se o CPF está cadastrado
+                const userDoc = await db.collection('usuarios').doc(CPF).get();
+
+                if (!userDoc.exists) {
+                    alert('CPF não cadastrado! Crie uma conta.');
+                    window.location.href = `Login.html?redirect=${redirect}`;
+                    return;
+                }
+
+                const userdata = userDoc.data();
+
+                // Verifica se a senha está correta
+                if (senha === userdata.senha) {
+                    // Login bem-sucedido
+                    sessionStorage.setItem('CPF', CPF); // Armazenando CPF na sessão
+
+                    // Redireciona conforme o caso
+                    switch (redirect) {
+                        case 'busca':
+                            window.location.href = 'buscar_consulta.php';
+                            break;
+                        default:
+                            window.location.href = 'agendamento.php';
+                            break;
+                    }
+                } else {
+                    // Senha incorreta
+                    alert('Senha incorreta! Tente novamente.');
+                    window.location.href = `Login.html?redirect=${redirect}`;
+                }
+
+            } catch (error) {
+                console.error("Erro ao conectar ao banco de dados: ", error);
+                alert('Erro ao realizar login. Tente novamente mais tarde.');
+            }
+        })();
+    </script>
+</body>
+</html>

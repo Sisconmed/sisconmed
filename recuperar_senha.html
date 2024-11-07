@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Recuperar Senha</title>
+    
+    
+</head>
+<body>
+
+    <div class="container">
+        <a class="botao-voltar" href="Login.html">Voltar</a>
+        <h2>Recuperar Senha</h2>
+        <p>Informe o seu endereço de e-mail abaixo e enviaremos instruções sobre como recuperar sua senha.</p>
+        <form action="enviar_email_recuperacao.php" method="post">
+            <input type="email" name="email" placeholder="Endereço de E-mail" required>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>
